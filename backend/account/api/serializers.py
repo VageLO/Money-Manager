@@ -1,14 +1,12 @@
 from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
 
-from bankaccount.models import BankAccount
+from account.models import Account
 
-class BankAccountSerializer(serializers.ModelSerializer):
-
+class AccountSerializer(serializers.ModelSerializer):
     class Meta:
-        model = BankAccount
+        model = Account
         fields = [
-            'id',
             'title',
             'currency',
             'created_at',

@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class BankAccount(models.Model):
+class Account(models.Model):
     title = models.CharField(max_length=255)
     currency = models.CharField(max_length=255)
 

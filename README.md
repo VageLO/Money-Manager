@@ -14,7 +14,7 @@
 
 ### Пример страницы
 
-![image](https://github.com/VageLO/Money-Manager/assets/48802151/59dcebde-8bd6-4a88-b373-97a53a4f0e8e)
+<img src="https://github.com/VageLO/Money-Manager/assets/48802151/59dcebde-8bd6-4a88-b373-97a53a4f0e8e" alt="drawing" width="350"/>
 
 *********
 ## Страница статистики
@@ -27,4 +27,4 @@
 
 ### Пример страницы
 
-![image](https://github.com/VageLO/Money-Manager/assets/48802151/288f94a7-00ae-480e-af8d-bf84cea90c32)
+<img src="https://github.com/VageLO/Money-Manager/assets/48802151/288f94a7-00ae-480e-af8d-bf84cea90c32" alt="drawing" width="350"/>

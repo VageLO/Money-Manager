@@ -28,3 +28,21 @@
 ### Пример страницы
 
 <img src="https://github.com/VageLO/Money-Manager/assets/48802151/288f94a7-00ae-480e-af8d-bf84cea90c32" alt="drawing" width="350"/>
+
+*********
+## Страница добавления:
+	
+ * Выбор счета
+ *  Тип операции
+     - Пополнение
+     - Списание
+  * Выбор категории
+  * Выбор подкатегории
+  * Валюта подставляется со счета
+  * Ввод даты и времени
+  * Сумма
+
+ 
+### Пример страницы
+
+<img src="https://github.com/VageLO/Money-Manager/assets/48802151/a0eabc74-91c4-417a-ad52-5bba3e36d86d" alt="drawing" width="350"/>

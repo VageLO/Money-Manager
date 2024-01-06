@@ -59,3 +59,8 @@
 
 * Список в виде карточек 
 * Возможность редактирования, удаления и добавления
+
+### Пример страницы
+
+<img src="https://github.com/VageLO/Money-Manager/assets/48802151/8f7a0fa1-9a9e-4176-ab98-3847ccf04a72" alt="drawing" width="350"/>
+

@@ -1,13 +1,8 @@
 import {useState, useCallback} from 'react';
-import { StyleSheet, TouchableWithoutFeedback, Keyboard, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Text, useTheme, TextInput, Button, RadioButton, TouchableRipple} from 'react-native-paper';
 import { DatePickerModal } from 'react-native-paper-dates';
-
-const DismissKeyboard = ({children}) => (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} accessible={false}>
-        {children}
-    </TouchableWithoutFeedback>
-)
+import ScreenWrapper from './components/screenWrapper.js';
 
 const AddPage = () => {
     const theme = useTheme()
@@ -15,7 +10,8 @@ const AddPage = () => {
     const [amount, setAmount] = useState(''); 
     const [date, setDate] = useState(undefined); 
     const [open, setOpen] = useState(false);
-    const [checked, setChecked] = useState('normal-ios');
+    const [checked, setChecked] = useState('spend');
+
     const onDismissSingle = useCallback(() => {
         setOpen(false);
     }, [setOpen]);
@@ -27,7 +23,6 @@ const AddPage = () => {
         [setOpen, setDate]);
 
     const handleChange = (text) => { 
-        console.log(text)
         const numericValue = text
             .replaceAll('.', ',')
             .split(",")
@@ -39,59 +34,77 @@ const AddPage = () => {
         setAmount(numericValue); 
     }; 
     return (  
-        <DismissKeyboard>
-            <View style={styles().container}>
-                <TextInput
-                    textColor={theme.colors.surface}
-                    style={styles().textInput}
-                    label="Amount"
-                    onChangeText={setAmount}
-                    onEndEditing={(e) => handleChange(e.nativeEvent.text)}
-                    value={amount} 
-                    keyboardType="numbers-and-punctuation"
-                    placeholder="Type something"
-                /> 
-                <Button onPress={() => setOpen(true)} uppercase={false} mode="outlined">
-                    Pick single date
-                </Button>
-                <DatePickerModal
-                    locale="en"
-                    mode="single"
-                    visible={open}
-                    onDismiss={onDismissSingle}
-                    date={date}
-                    onConfirm={onConfirmSingle}
-                />
-                <TouchableRipple onPress={() => setChecked('normal-ios')}>
-                    <View style={styles.row}>
-                    <Text>Normal 2 - IOS</Text>
+        <ScreenWrapper 
+            withScrollView 
+            contentContainerStyle={styles.contentConteiner} 
+            >
+            <TextInput // TODO: Разобраться с закрытием клавиатуры на нажатие в любой области
+                textColor={theme.colors.surface}
+                style={styles.textInput}
+                label="Amount"
+                onChangeText={setAmount}
+                onEndEditing={(e) => handleChange(e.nativeEvent.text)}
+                value={amount} 
+                keyboardType="numbers-and-punctuation"
+                placeholder="Type something"
+            /> 
+            <Button onPress={() => setOpen(true)} uppercase={false} mode="outlined">
+                Pick date
+            </Button>
+            <DatePickerModal
+                locale="en"
+                mode="single"
+                visible={open}
+                onDismiss={onDismissSingle}
+                date={date}
+                onConfirm={onConfirmSingle}
+            />
+            <TouchableRipple onPress={() => setChecked('spend')}>
+                <View style={styles.row}>
+                    <Text>Списание</Text>
                     <View pointerEvents="none">
-                        <RadioButton.IOS
-                        value="normal-ios"
-                        status={checked === 'normal-ios' ? 'checked' : 'unchecked'}
+                        <RadioButton.Android
+                        value="spend"
+                        status={checked === 'spend' ? 'checked' : 'unchecked'}
                         />
                     </View>
+                </View>
+            </TouchableRipple>
+            <TouchableRipple onPress={() => setChecked('save')}>
+                <View style={styles.row}>
+                    <Text>Пополнение</Text>
+                    <View pointerEvents="none">
+                        <RadioButton.Android
+                        value="save"
+                        status={checked === 'save' ? 'checked' : 'unchecked'}
+                        />
                     </View>
-                </TouchableRipple>
-            </View>  
-        </DismissKeyboard>
+                </View>
+            </TouchableRipple>
+        </ScreenWrapper>  
     );
 }
 
-const styles = () => {
-    const theme = useTheme()
-    return StyleSheet.create({
-        container: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: theme.colors.background
-        },
-        textInput: {
-            width: 150,
-            height: 50
-        }
-    });
-}
+const styles = StyleSheet.create({
+    container: {
+        paddingVertical: 8,
+    },
+    // contentConteiner: {
+    //     flex: 1,
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    // },
+    textInput: {
+        flexDirection: 'row',
+        marginBottom: 20
+    },
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+    },
+});
 
 export default AddPage;

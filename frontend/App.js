@@ -29,7 +29,7 @@ export default function App() {
       <SafeAreaProvider>
         <SafeAreaView/>
         
-        <NavigationContainer>
+        <NavigationContainer theme={theme}>
           <BottomMenu/>
         </NavigationContainer>
 

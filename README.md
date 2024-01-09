@@ -1,5 +1,8 @@
 # Money-Manager
 
+### Полезные ссылки:
+* [expo-sqlite](https://docs.expo.dev/versions/latest/sdk/sqlite/)
+
 ## Главная страница
 * Отображение списка счетов (как в m-Bank)
   - вверху 

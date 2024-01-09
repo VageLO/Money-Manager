@@ -2,6 +2,7 @@
 
 ### Полезные ссылки:
 * [expo-sqlite](https://docs.expo.dev/versions/latest/sdk/sqlite/)
+* [react-native-share-extension](https://github.com/alinz/react-native-share-extension)
 
 ## Главная страница
 * Отображение списка счетов (как в m-Bank)
